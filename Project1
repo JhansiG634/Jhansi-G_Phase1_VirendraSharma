@@ -1,0 +1,132 @@
+package Package.java.Project1;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class LockedMe {
+
+	public static void main(String[] args) {
+		Main m = new Main();
+		Scanner sc = new Scanner(System.in);
+		// Home screen for the application
+		System.out.println("*****************************************************");
+		System.out.println("**************** Locked Me.com **********************");
+		System.out.println("                                                     ");
+		System.out.println("               Developed by JHANSI                   ");
+		System.out.println("*****************************************************");
+		
+		
+		System.out.println("Welcome to LockedMe.com");
+		System.out.println(" 1. View list of existing files");
+		System.out.println(" 2. More options");		
+		System.out.println(" 6. Exit application");
+		System.out.println("Please enter your choice:");
+		
+	    int i=sc.nextInt();
+	
+		switch(i)
+		{
+			case 1 : System.out.println("********************************");
+		             File f = new File("C:\\Users\\Jhansi\\Project\\ "); 
+		             String[] str1 =f.list();
+		             Arrays.sort(str1);
+			         for(String str2:str1)
+			         {
+			        	 System.out.println(str2);
+			         }
+			         System.out.println("Enter 0 to go back to home screen");
+			         Scanner sc5= new Scanner(System.in);
+			         sc5.nextInt();
+			         m.main(args);
+			         break;
+		            
+			 case 2 :System.out.println("**************************");
+			         System.out.println("1. Add/Create a file");
+					 System.out.println("2. Delete a file");
+					 System.out.println("3. Search file");
+					 System.out.println("");
+					 System.out.println("Enter 0 to go back to home screen");
+					 System.out.println("");
+					 System.out.println("Please enter your choice:");
+					 Scanner sc1 = new Scanner(System.in);
+					 int i1=sc1.nextInt();
+					 switch(i1)
+					 {
+					  case 0: m.main(args);
+					          break;
+					  case 1: System.out.println("Enter file name to create:");
+					          Scanner sc2 = new Scanner(System.in);
+					          String name=sc2.nextLine();
+					           try{
+						        File f1 = new File("C:\\Users\\Jhansi\\Project\\"+name);
+					            if(f1.createNewFile())
+				                {
+				        	     System.out.println("New file is created");
+				                }
+					            else {
+				                if(f1.exists()) {
+					        	System.out.println("File already exists");
+				                }
+					            else {
+					             System.out.println("File doesn't exists");
+					             }
+				                }
+					           }catch(Exception e) {
+					             e.getStackTrace();
+					           }
+					           System.out.println("Enter 0 to go back to home screen");
+					             Scanner sc8 = new Scanner(System.in);
+					             int l2=sc8.nextInt();
+					             m.main(args);
+					           break;
+					   case 2: System.out.println("Enter the file you want to delete: ");
+					           Scanner sc3= new Scanner(System.in);
+					           String str3=sc3.next();
+					           File f2 = new File("C:\\Users\\Jhansi\\Project\\"+str3);
+					           if(f2.delete())
+					        	   System.out.println("File deleted successfully");
+					           else
+					        	   System.out.println("Since file doesn't exist, cannot delete the file");
+					           System.out.println("Enter 0 to go back to home screen");
+					             Scanner sc9 = new Scanner(System.in);
+					             int l3=sc9.nextInt();
+					             m.main(args);
+					           break;
+					   case 3: System.out.println("Please enter the file name to search");
+					           Scanner sc4=new Scanner(System.in);
+					           String str4=sc4.next();
+					           File f3 = new File("C:\\Users\\Jhansi\\Project\\"+str4);
+					           if(f3.exists())
+					        	   System.out.println("File exists in the path:"+f3.getParent());
+					           else
+					        	   System.out.println("File doesn't exists in the current path");
+					           System.out.println("Enter 0 to go back to home screen");
+					           Scanner sc7 = new Scanner(System.in);
+					           int l4=sc7.nextInt();
+					           m.main(args);
+					           
+					           
+			    // Option to go back to main menu
+					Scanner sc6 = new Scanner(System.in);
+					int l1 = sc6.nextInt();
+					m.main(args);
+					break;
+					        
+		case 6: System.out.println("");
+		        System.exit(0);
+		        break;
+		        
+		default: System.out.println("Your option doesn't exists in given list.Please select from given list");
+		         System.out.println("Enter 0 to go back to home screen");
+				 Scanner sc10 = new Scanner(System.in);
+				 int l5 = sc10.nextInt();
+				 m.main(args);
+			     break;
+					 
+		}
+	}
+
+	}
+
+}
